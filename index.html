@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portfolio - Projects</title>
+
+<style>
+body {font-family: Arial; background:#111; color:#fff; margin:0}
+section {padding:40px}
+.pgrid {display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:20px}
+.pcard {background:#1b1b1b; border-radius:10px; overflow:hidden}
+.pthumb img {width:100%; height:200px; object-fit:cover; cursor:pointer}
+.pbody {padding:15px}
+.vbtn {color:#00e5ff; text-decoration:none; cursor:pointer}
+
+.modal {
+  display:none; position:fixed; top:0; left:0;
+  width:100%; height:100%; background:rgba(0,0,0,0.9);
+  justify-content:center; align-items:center; flex-direction:column;
+}
+.modal img {max-width:90%; max-height:80%}
+iframe {width:90%; height:80%}
+.close {position:absolute; top:20px; right:20px; cursor:pointer}
+</style>
+
+</head>
+<body>
+
+<section id="projects">
+<h2>Projects</h2>
+
+<div class="pgrid">
+
+<div class="pcard">
+  <div class="pthumb">
+    <img src="images/ontology-mindmap.jpg" onclick="openImage(this.src)">
+  </div>
+  <div class="pbody">
+    <h3>Ontology Group Project Mind Map</h3>
+    <a class="vbtn" onclick="openPDF('docs/ontology-project.pdf')">View PDF</a>
+  </div>
+</div>
+
+<div class="pcard">
+  <div class="pthumb">
+    <img src="images/ehom-poster.jpg" onclick="openImage(this.src)">
+  </div>
+  <div class="pbody">
+    <h3>EHOM Manual Poster</h3>
+  </div>
+</div>
+
+<div class="pcard">
+  <div class="pthumb">
+    <img src="images/blackbox.jpg" onclick="openImage(this.src)">
+  </div>
+  <div class="pbody">
+    <h3>Ethics of Black Box</h3>
+  </div>
+</div>
+
+</div>
+</section>
+
+<div class="modal" id="imgModal">
+  <span class="close" onclick="closeModal()">✖</span>
+  <img id="modalImg">
+</div>
+
+<div class="modal" id="pdfModal">
+  <span class="close" onclick="closeModal()">✖</span>
+  <iframe id="pdfFrame"></iframe>
+</div>
+
+<script>
+function openImage(src){
+  document.getElementById("imgModal").style.display="flex";
+  document.getElementById("modalImg").src=src;
+}
+
+function openPDF(src){
+  document.getElementById("pdfModal").style.display="flex";
+  document.getElementById("pdfFrame").src=src;
+}
+
+function closeModal(){
+  document.getElementById("imgModal").style.display="none";
+  document.getElementById("pdfModal").style.display="none";
+}
+</script>
+
+</body>
+</html>
